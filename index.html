@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cumpleaños </title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-image: url('imag.jpeg'); /* Cambiada la URL de la imagen de fondo */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: #ffffff;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            padding: 50px;
+            background-color: rgba(238, 118, 0, 0.8);
+            border-radius: 10px;
+            max-width: 100%;
+            box-sizing: border-box;
+            width: 90%;
+        }
+
+        .countdown {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .countdown-item {
+            font-size: 20px;
+            margin: 0 7px;
+            padding: 5px;
+            background-color: #f8d700;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 1.2em;
+            margin-bottom: 40px;
+        }
+
+        .background-image {
+            width: 100%;
+            height: auto;
+            max-height: 400px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img class="background-image" src="ima.jpeg" alt="Fondo One Piece">
+      
+        <p>¡Estamos emocionados por celebrar contigo este día especial! Disfrutemos juntos.</p>
+        <div class="countdown">
+            <div id="days" class="countdown-item"></div>
+            <div id="hours" class="countdown-item"></div>
+            <div id="minutes" class="countdown-item"></div>
+            <div id="seconds" class="countdown-item"></div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const birthday = new Date(2023, 9, 30, 0, 0, 0);
+
+            function updateCountdown() {
+                const now = new Date();
+                const timeDifference = birthday - now;
+
+                const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+
+                document.getElementById('days').textContent = days + ' días';
+                document.getElementById('hours').textContent = hours + ' horas';
+                document.getElementById('minutes').textContent = minutes + ' minutos';
+                document.getElementById('seconds').textContent = seconds + ' segundos';
+            }
+
+            setInterval(updateCountdown, 1000);
+        });
+    </script>
+</body>
+</html>
